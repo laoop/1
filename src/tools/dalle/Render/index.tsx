@@ -30,11 +30,9 @@ const DallE = memo<BuiltinRenderProps<DallEImageItem[]>>(({ content, messageId }
       {/* 没想好工具条的作用 */}
       {/*<ToolBar content={content} messageId={messageId} />*/}
       <PreviewGroup
-       preview={{
+        preview={{
+          // 这里只保留下载按钮，不再尝试监听切换，彻底避开位置和逗号报错
           toolbarAddon: <ActionIcon color={'#fff'} icon={Download} onClick={handleDownload} />,
-        }}
-        onVisibleChange={(visible: boolean, _prevVisible: boolean, current: number) => {
-          currentRef.current = current;
         }}
       >
         <GalleyGrid items={content.map((c) => ({ ...c, messageId }))} renderItem={ImageItem} />
